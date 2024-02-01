@@ -33,6 +33,11 @@ class TestPrezziBenzina(unittest.TestCase):
         prezzi_benzina: PrezziBenzina = prezzibenzina_client().retrive_info("6106")
         result = prezzi_benzina.get_values()[0]
         self.assertEqual(type(result['price']), float)
+        
+    def test_values_zero(self):
+        prezzi_benzina: PrezziBenzina = prezzibenzina_client().retrive_info("6106")
+        result = prezzi_benzina.get_values()[0]
+        self.assertTrue(result['price'] > 0)
 
 
 if __name__ == '__main__':
